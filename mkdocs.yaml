@@ -1,0 +1,8 @@
+site_name: Blue-Green Deployments
+site_description: Blue-green deployments with Knative for a hello country FastAPI application
+
+nav:
+  - Overview: index.md
+
+plugins:
+  - techdocs-core

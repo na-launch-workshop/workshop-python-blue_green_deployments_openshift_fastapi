@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: workshop-python-blue_green_deployments_openshift_fastapi
+  title: Blue-Green Deployments - FastAPI
+  description: |
+    Blue-Green Deployments with FastAPI
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - bluegreen
+    - python
+# links:
+#    - url: https://<openshift-cluster>/#<hosted-git-repo>
+#      title: "Launch from Dev Spaces"
+#      icon: web
+spec:
+  type: module
+  lifecycle: production
+  owner: group:default/workshop-admins
+  subcomponentOf: component:default/workshop-repository

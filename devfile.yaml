@@ -1,0 +1,50 @@
+schemaVersion: 2.2.2
+metadata:
+  name: workshop-python-blue_green_deployments_openshift_fastapi
+  version: 1.0.0
+  description: DevSpaces workspace for FastAPI hello country app
+attributes:
+  che-editor: vscode
+components:
+  - name: tools
+    container:
+      image: image-registry.openshift-image-registry.svc:5000/openshift/udi-rhel9:latest
+      endpoints:
+        - exposure: public
+          name: hello-by-lang
+          protocol: https
+          targetPort: 8080
+          path: /
+      cpuLimit: '2'
+      cpuRequest: '500m'
+      memoryLimit: '4Gi'
+      memoryRequest: '2Gi'
+      mountSources: true
+commands:
+  - id: 1-install
+    exec:
+      label: "1. Install dependencies"
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: "pip install -r requirements-dev.txt"
+      group:
+        kind: build
+        isDefault: true
+  - id: 2-test
+    exec:
+      label: "2. Run tests"
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: "python -m pytest"
+      group:
+        kind: test
+        isDefault: true
+  - id: 3-start
+    exec:
+      label: "3. Start development server"
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: "uvicorn app.main:app --host 0.0.0.0 --port 8080"
+      group:
+        kind: run
+        isDefault: true
