@@ -7,7 +7,9 @@ metadata:
     Blue-Green Deployments with FastAPI
   annotations:
     backstage.io/techdocs-ref: dir:.
-#   backstage.io/techdocs-ref: dir:https://<hosted-git-repo>     # use absolute path instead to consolidate techdocs among repo forks
+#   backstage.io/techdocs-ref: dir:https://<hosted-git-repo>   # use absolute path instead to consolidate techdocs among repo forks
+#   gitlab.com/instance: ""                                    # uncomment these two gitlab.com lines to disable GitLab tabs
+#   gitlab.com/project-slug: ""                                # i.e. Issues, Pull/Merge Requests, CI in entity details
   tags:
     - bluegreen
     - python
@@ -17,6 +19,6 @@ metadata:
 #     icon: web
 spec:
   type: module
-  lifecycle: production
+  lifecycle: development
   owner: group:default/workshop-admins
   subcomponentOf: component:default/workshop-repository
